@@ -6,24 +6,26 @@ var pegar = document.getElementById("pegar");
 var copiar = document.getElementById("copiar");
 
 bontonEncriptar.addEventListener("click",function (j) {
-
-	var regularEx=/a|e|i|o|u/g;
-	var cambio={"a":"ai","e":"enter","i":"imer","o":"ober","u":"ufal"}
-	var validar = regularEx.test(entradaEncriptar.value);
-	if (validar=true) {
+    var minusculas = /[^a-z]/g; 
+	var regularEx = /a|e|i|o|u/g;
+	var cambio = {"a":"ai","e":"enter","i":"imer","o":"ober","u":"ufal"}
+	var validar = minusculas.test(entradaEncriptar.value);
+	if (!validar) {
 		entradaDesencriptar.value=entradaEncriptar.value.replace(regularEx,function(e,p){
-			
 			return cambio[e];
 		})
+	}else{
+		alert("solo letras minusculas");
 	}
+
 	entradaEncriptar.value=""
 })
 bontonDesencriptar.addEventListener("click",function (j) {
 
-	var regularEx2=/ai|enter|imer|ober|ufal/g;
-	var cambio2={"ai":"a","enter":"e","imer":"i","ober":"o","ufal":"u"}
+	var regularEx2 = /ai|enter|imer|ober|ufal/g;
+	var cambio2 = {"ai":"a","enter":"e","imer":"i","ober":"o","ufal":"u"}
 	var validar2 = regularEx2.test(entradaDesencriptar.value);
-	if (validar2=true) {
+	if (validar2 = true) {
 		entradaEncriptar.value=entradaDesencriptar.value.replace(regularEx2,function(el,pl){
 			
 			return cambio2[el];
